@@ -1,8 +1,13 @@
+import { Link } from "react-router-dom";
 import { Phone, MapPin, MessageCircle } from "lucide-react";
 import logo from "@/assets/logo.jpg";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+
+  const handleWhatsAppClick = () => {
+    window.open("https://wa.me/22898775158", "_blank");
+  };
 
   return (
     <footer className="bg-deep-black text-white">
@@ -11,7 +16,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-4 mb-6">
+            <Link to="/" className="flex items-center gap-4 mb-6">
               <img
                 src={logo}
                 alt="Maestro Store Premier"
@@ -23,22 +28,20 @@ const Footer = () => {
                 </h3>
                 <p className="text-gold/80 font-medium">Premier</p>
               </div>
-            </div>
+            </Link>
             <p className="text-white/60 leading-relaxed max-w-md mb-6">
               Votre boutique premium d'électronique à Lomé. 
               Produits de qualité supérieure importés d'Europe et des États-Unis, 
               avec un service client d'excellence.
             </p>
             <div className="flex gap-4">
-              <a
-                href="https://wa.me/22898775158"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={handleWhatsAppClick}
                 className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center hover:bg-gold/20 transition-colors"
                 aria-label="WhatsApp"
               >
                 <MessageCircle className="w-5 h-5 text-gold" />
-              </a>
+              </button>
               <a
                 href="tel:+22898775158"
                 className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center hover:bg-gold/20 transition-colors"
@@ -56,18 +59,18 @@ const Footer = () => {
             </h4>
             <ul className="space-y-3">
               {[
-                { href: "#about", label: "À propos" },
-                { href: "#products", label: "Produits" },
-                { href: "#why-us", label: "Pourquoi nous" },
-                { href: "#contact", label: "Contact" },
+                { href: "/", label: "Accueil" },
+                { href: "/products", label: "Produits" },
+                { href: "/about", label: "À propos" },
+                { href: "/contact", label: "Contact" },
               ].map((link) => (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="text-white/60 hover:text-gold transition-colors underline-luxury"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
