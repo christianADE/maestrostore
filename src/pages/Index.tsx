@@ -37,7 +37,7 @@ const Index = () => {
         {/* Gold accent line animated */}
         <div className="absolute top-0 left-0 w-[1px] h-full bg-gradient-to-b from-transparent via-gold to-transparent opacity-30 shadow-[0_0_15px_rgba(198,147,10,0.5)] z-0" />
 
-        {/* Animated Particles/Stars background - HIGH CONTRAST */}
+        {/* Animated Particles/Stars background - FULL DISTRIBUTION */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-[5]">
           {[...Array(50)].map((_, i) => (
             <motion.div
@@ -49,21 +49,21 @@ const Index = () => {
                 backgroundColor: i % 3 === 0 ? "#FFFFFF" : "#C6930A",
                 filter: "blur(1px)",
                 boxShadow: "0 0 20px rgba(198, 147, 10, 0.8)",
+                left: Math.random() * 100 + "%", // Random horizontal position
+                top: "105%", // Start below the screen
               }}
               initial={{
-                x: Math.random() * 100 + "%",
-                y: "100%",
                 opacity: 0,
               }}
               animate={{
-                y: "-10%",
-                opacity: [0, 1, 1, 0],
+                y: "-120vh", // Move up by viewport height
+                opacity: [0, 1, 1, 0], // Fade in/out
               }}
               transition={{
-                duration: Math.random() * 5 + 7,
+                duration: Math.random() * 10 + 15, // Slow, varying speed
                 repeat: Infinity,
                 ease: "linear",
-                delay: Math.random() * 10,
+                delay: -Math.random() * 20, // Negative delay to start mid-animation
               }}
             />
           ))}
