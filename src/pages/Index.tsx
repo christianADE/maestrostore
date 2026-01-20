@@ -48,7 +48,7 @@ const Index = () => {
                 height: Math.random() * 8 + 4 + "px",
                 backgroundColor: i % 3 === 0 ? "#FFFFFF" : "#C6930A",
                 filter: "blur(1px)",
-                boxShadow: "0 0 20px rgba(198, 147, 10, 0.8)",
+                boxShadow: "0 0 20px rgba(198, 147, 10, 0.4)",
                 left: Math.random() * 100 + "%", // Random horizontal position
                 top: "105%", // Start below the screen
               }}
@@ -57,7 +57,7 @@ const Index = () => {
               }}
               animate={{
                 y: "-120vh", // Move up by viewport height
-                opacity: [0, 1, 1, 0], // Fade in/out
+                opacity: [0, 0.5, 0.5, 0], // Fade in/out
               }}
               transition={{
                 duration: Math.random() * 10 + 15, // Slow, varying speed
