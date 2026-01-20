@@ -1,5 +1,6 @@
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -17,16 +18,56 @@ const Index = () => {
 
       {/* Hero Section - Full viewport height */}
       <section className="relative min-h-screen flex items-end overflow-hidden pb-24">
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-hero" />
+        {/* Background base */}
+        <div className="absolute inset-0 bg-gradient-hero z-0" />
 
-        {/* Decorative elements */}
-        <div className="absolute top-1/4 right-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-orange/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold/5 rounded-full blur-3xl" />
+        {/* Enhanced Decorative Glowing Shapes */}
+        <motion.div
+          animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.15, 0.1] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/4 -right-20 w-[500px] h-[500px] bg-gold/20 rounded-full blur-[120px] z-0"
+        />
+        <motion.div
+          animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.2, 0.1] }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute -bottom-1/4 -left-20 w-[600px] h-[600px] bg-orange/15 rounded-full blur-[120px] z-0"
+        />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-gold/5 rounded-full blur-[150px] z-0" />
 
-        {/* Gold accent line */}
-        <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-transparent via-gold to-transparent opacity-50" />
+        {/* Gold accent line animated */}
+        <div className="absolute top-0 left-0 w-[1px] h-full bg-gradient-to-b from-transparent via-gold to-transparent opacity-30 shadow-[0_0_15px_rgba(198,147,10,0.5)] z-0" />
+
+        {/* Animated Particles/Stars background - HIGH CONTRAST */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-[5]">
+          {[...Array(50)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full"
+              style={{
+                width: Math.random() * 8 + 4 + "px",
+                height: Math.random() * 8 + 4 + "px",
+                backgroundColor: i % 3 === 0 ? "#FFFFFF" : "#C6930A",
+                filter: "blur(1px)",
+                boxShadow: "0 0 20px rgba(198, 147, 10, 0.8)",
+              }}
+              initial={{
+                x: Math.random() * 100 + "%",
+                y: "100%",
+                opacity: 0,
+              }}
+              animate={{
+                y: "-10%",
+                opacity: [0, 1, 1, 0],
+              }}
+              transition={{
+                duration: Math.random() * 5 + 7,
+                repeat: Infinity,
+                ease: "linear",
+                delay: Math.random() * 10,
+              }}
+            />
+          ))}
+        </div>
 
         <div className="container-luxury relative z-10 px-6 pt-24 pb-12">
           {/* Content centered and positioned low */}
