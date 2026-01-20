@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollReveal from "@/components/ScrollReveal";
 import logo from "@/assets/logo.jpg";
 
 const About = () => {
@@ -39,13 +40,13 @@ const About = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       {/* Page Header */}
       <section className="pt-32 pb-16 bg-gradient-hero relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-gold/5 to-transparent" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-orange/10 rounded-full blur-3xl" />
-        
-        <div className="container-luxury relative z-10 px-6 text-center">
+
+        <ScrollReveal animation="fade-in" className="container-luxury relative z-10 px-6 text-center">
           <span className="text-gold font-medium tracking-widest uppercase text-sm">
             Notre Histoire
           </span>
@@ -53,18 +54,18 @@ const About = () => {
             À Propos de <span className="text-gradient-gold">Nous</span>
           </h1>
           <p className="text-white/70 text-lg max-w-2xl mx-auto">
-            Découvrez l'histoire de Maestro Store Premier, votre boutique 
+            Découvrez l'histoire de Maestro Store Premier, votre boutique
             d'électronique premium de confiance à Lomé.
           </p>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* Brand Story */}
-      <section className="section-padding">
+      <section className="section-padding overflow-hidden">
         <div className="container-luxury">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Logo & Image */}
-            <div className="relative">
+            <ScrollReveal animation="slide-left" className="relative">
               <div className="absolute inset-0 bg-gradient-to-tr from-gold/20 to-orange/10 rounded-3xl blur-2xl" />
               <div className="relative bg-deep-black rounded-3xl p-12 text-center">
                 <img
@@ -83,30 +84,30 @@ const About = () => {
                 </div>
                 <p className="text-white/60 mt-2 text-sm">Boutique Premium à Lomé</p>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Story Content */}
-            <div className="space-y-6">
+            <ScrollReveal animation="slide-right" delay={0.2} className="space-y-6">
               <h2 className="font-serif text-4xl font-bold text-foreground">
                 Une Passion pour l'<span className="text-gradient-gold">Excellence</span>
               </h2>
               <p className="text-muted-foreground text-lg leading-relaxed">
-                Maestro Store Premier est né d'une vision simple : offrir aux habitants 
-                de Lomé et du Togo l'accès à des produits électroniques de qualité 
+                Maestro Store Premier est né d'une vision simple : offrir aux habitants
+                de Lomé et du Togo l'accès à des produits électroniques de qualité
                 supérieure, habituellement réservés aux marchés européens et américains.
               </p>
               <p className="text-muted-foreground text-lg leading-relaxed">
-                Notre engagement envers l'excellence nous pousse à sélectionner 
-                rigoureusement chaque produit, à garantir leur authenticité, et à 
-                offrir un service client irréprochable qui reflète les standards 
+                Notre engagement envers l'excellence nous pousse à sélectionner
+                rigoureusement chaque produit, à garantir leur authenticité, et à
+                offrir un service client irréprochable qui reflète les standards
                 des grandes enseignes internationales.
               </p>
               <p className="text-muted-foreground text-lg leading-relaxed">
-                Que vous soyez un professionnel à la recherche d'outils performants 
-                ou un particulier souhaitant le meilleur de la technologie, Maestro 
+                Que vous soyez un professionnel à la recherche d'outils performants
+                ou un particulier souhaitant le meilleur de la technologie, Maestro
                 Store Premier est votre partenaire de confiance.
               </p>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -124,8 +125,13 @@ const About = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value) => (
-              <div key={value.title} className="card-luxury p-8 text-center">
+            {values.map((value, index) => (
+              <ScrollReveal
+                key={value.title}
+                animation="scale-up"
+                delay={index * 0.1}
+                className="card-luxury p-8 text-center"
+              >
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-gold/10 to-orange/10 mb-6">
                   <value.icon className="w-8 h-8 text-primary" />
                 </div>
@@ -135,7 +141,7 @@ const About = () => {
                 <p className="text-muted-foreground leading-relaxed">
                   {value.description}
                 </p>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -185,7 +191,7 @@ const About = () => {
             Prêt à Nous Faire Confiance ?
           </h2>
           <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
-            Découvrez notre collection de produits premium et laissez-nous 
+            Découvrez notre collection de produits premium et laissez-nous
             vous accompagner dans vos choix technologiques.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

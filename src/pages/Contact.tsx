@@ -2,6 +2,7 @@ import { Phone, MessageCircle, MapPin, Clock, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const Contact = () => {
   const handleWhatsAppClick = (phone: string) => {
@@ -43,13 +44,13 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       {/* Page Header */}
       <section className="pt-32 pb-16 bg-gradient-hero relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-gold/5 to-transparent" />
         <div className="absolute top-1/2 right-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
-        
-        <div className="container-luxury relative z-10 px-6 text-center">
+
+        <ScrollReveal animation="fade-in" className="container-luxury relative z-10 px-6 text-center">
           <span className="text-gold font-medium tracking-widest uppercase text-sm">
             Nous Contacter
           </span>
@@ -57,36 +58,35 @@ const Contact = () => {
             Parlons de Vos <span className="text-gradient-gold">Besoins</span>
           </h1>
           <p className="text-white/70 text-lg max-w-2xl mx-auto">
-            Notre équipe est à votre disposition pour répondre à toutes vos 
+            Notre équipe est à votre disposition pour répondre à toutes vos
             questions et vous accompagner dans vos achats.
           </p>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* Contact Cards */}
       <section className="section-padding">
         <div className="container-luxury">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {contactInfo.map((info) => (
-              <div
+            {contactInfo.map((info, index) => (
+              <ScrollReveal
                 key={info.title}
-                className={`card-luxury p-8 text-center ${
-                  info.highlight
+                animation="fade-up"
+                delay={index * 0.1}
+                className={`card-luxury p-8 text-center h-full transition-all duration-300 ${info.highlight
                     ? "border-2 border-gold/30 bg-gradient-to-b from-gold/5 to-transparent"
                     : ""
-                }`}
+                  }`}
               >
                 <div
-                  className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 ${
-                    info.highlight
+                  className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 ${info.highlight
                       ? "bg-gradient-to-br from-gold to-gold-light"
                       : "bg-gradient-to-br from-gold/10 to-orange/10"
-                  }`}
+                    }`}
                 >
                   <info.icon
-                    className={`w-8 h-8 ${
-                      info.highlight ? "text-deep-black" : "text-primary"
-                    }`}
+                    className={`w-8 h-8 ${info.highlight ? "text-deep-black" : "text-primary"
+                      }`}
                   />
                 </div>
                 <h3 className="font-serif text-xl font-semibold mb-4 text-foreground">
@@ -96,18 +96,17 @@ const Contact = () => {
                   {info.lines.map((line, idx) => (
                     <p
                       key={idx}
-                      className={`${
-                        info.action
+                      className={`${info.action
                           ? "text-foreground font-medium cursor-pointer hover:text-primary transition-colors"
                           : "text-muted-foreground"
-                      }`}
+                        }`}
                       onClick={() => info.action?.(line)}
                     >
                       {line}
                     </p>
                   ))}
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
 
@@ -116,13 +115,13 @@ const Contact = () => {
             {/* Decorative elements */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-orange/10 rounded-full blur-2xl" />
-            
+
             <div className="relative z-10 text-center">
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-4">
                 Contactez-nous Maintenant
               </h2>
               <p className="text-white/70 text-lg mb-8 max-w-xl mx-auto">
-                Pour toute demande d'information sur nos produits et nos prix, 
+                Pour toute demande d'information sur nos produits et nos prix,
                 n'hésitez pas à nous contacter via WhatsApp ou par téléphone.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -1,7 +1,9 @@
 import { ArrowUpRight } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollReveal from "@/components/ScrollReveal";
 import smartphoneImg from "@/assets/product-smartphone.jpg";
 import laptopImg from "@/assets/product-laptop.jpg";
 import accessoriesImg from "@/assets/product-accessories.jpg";
@@ -59,13 +61,13 @@ const Products = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       {/* Page Header */}
       <section className="pt-32 pb-16 bg-gradient-hero relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-gold/5 to-transparent" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
-        
-        <div className="container-luxury relative z-10 px-6 text-center">
+
+        <ScrollReveal animation="fade-in" className="container-luxury relative z-10 px-6 text-center">
           <span className="text-gold font-medium tracking-widest uppercase text-sm">
             Notre Collection
           </span>
@@ -73,10 +75,10 @@ const Products = () => {
             Produits <span className="text-gradient-gold">Premium</span>
           </h1>
           <p className="text-white/70 text-lg max-w-2xl mx-auto">
-            Découvrez notre sélection exclusive de produits électroniques haut de gamme, 
+            Découvrez notre sélection exclusive de produits électroniques haut de gamme,
             soigneusement importés d'Europe et des États-Unis.
           </p>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* Products Grid */}
@@ -86,30 +88,38 @@ const Products = () => {
             {categories.map((category, index) => (
               <div
                 key={category.category}
-                className={`grid lg:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 1 ? "lg:grid-flow-dense" : ""
-                }`}
+                className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? "lg:grid-flow-dense" : ""
+                  }`}
               >
                 {/* Image */}
-                <div className={`relative ${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
-                  <div className="absolute inset-0 bg-gradient-to-tr from-gold/20 to-orange/10 rounded-3xl blur-2xl transform rotate-2" />
-                  <div className="relative overflow-hidden rounded-3xl group">
-                    <img
-                      src={category.image}
-                      alt={category.title}
-                      className="w-full aspect-square object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 via-transparent to-transparent" />
-                    <div className="absolute bottom-6 left-6">
-                      <span className="px-4 py-2 rounded-full bg-gold/20 backdrop-blur-sm text-gold text-sm font-medium">
-                        {category.category}
-                      </span>
+                <ScrollReveal
+                  animation={index % 2 === 0 ? "slide-left" : "slide-right"}
+                  className={`${index % 2 === 1 ? "lg:col-start-2" : ""}`}
+                >
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-gold/20 to-orange/10 rounded-3xl blur-2xl transform rotate-2" />
+                    <div className="relative overflow-hidden rounded-3xl group">
+                      <img
+                        src={category.image}
+                        alt={category.title}
+                        className="w-full aspect-square object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 via-transparent to-transparent" />
+                      <div className="absolute bottom-6 left-6">
+                        <span className="px-4 py-2 rounded-full bg-gold/20 backdrop-blur-sm text-gold text-sm font-medium">
+                          {category.category}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </ScrollReveal>
 
                 {/* Content */}
-                <div className={`space-y-6 ${index % 2 === 1 ? "lg:col-start-1" : ""}`}>
+                <ScrollReveal
+                  animation={index % 2 === 0 ? "slide-right" : "slide-left"}
+                  delay={0.2}
+                  className={`space-y-6 ${index % 2 === 1 ? "lg:col-start-1" : ""}`}
+                >
                   <h2 className="font-serif text-4xl font-bold text-foreground">
                     {category.title}
                   </h2>
@@ -119,11 +129,18 @@ const Products = () => {
 
                   {/* Items list */}
                   <ul className="space-y-3">
-                    {category.items.map((item) => (
-                      <li key={item} className="flex items-center gap-3">
+                    {category.items.map((item, i) => (
+                      <motion.li
+                        key={item}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.3 + (i * 0.1) }}
+                        viewport={{ once: true }}
+                        className="flex items-center gap-3"
+                      >
                         <span className="w-2 h-2 rounded-full bg-gold" />
                         <span className="text-foreground">{item}</span>
-                      </li>
+                      </motion.li>
                     ))}
                   </ul>
 
@@ -142,7 +159,7 @@ const Products = () => {
                       <ArrowUpRight className="w-4 h-4" />
                     </Button>
                   </div>
-                </div>
+                </ScrollReveal>
               </div>
             ))}
           </div>
@@ -156,7 +173,7 @@ const Products = () => {
             Vous ne trouvez pas ce que vous cherchez ?
           </h2>
           <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
-            Contactez-nous pour toute demande spéciale. Nous pouvons commander 
+            Contactez-nous pour toute demande spéciale. Nous pouvons commander
             n'importe quel produit électronique selon vos besoins.
           </p>
           <Button
