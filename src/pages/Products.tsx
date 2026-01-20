@@ -4,12 +4,56 @@ import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import iphone12Img from "@/assets/iphone_12_pro_max.png";
+import iphone7Img from "@/assets/iphone_7.png";
+import bestSellerImg from "@/assets/telephone_best_sellers.png";
 import smartphoneImg from "@/assets/product-smartphone.jpg";
 import laptopImg from "@/assets/product-laptop.jpg";
 import accessoriesImg from "@/assets/product-accessories.jpg";
 
 const Products = () => {
   const categories = [
+    // Bestsellers / Specific Models
+    {
+      image: iphone12Img,
+      category: "Haut de Gamme",
+      title: "iPhone 12 Pro Max",
+      description:
+        "Performance exceptionnelle et design élégant. Le choix ultime pour les professionnels.",
+      items: [
+        "256GB / 512GB",
+        "Bleu Pacifique / Graphite",
+        "Face ID",
+        "Triple caméra",
+      ],
+    },
+    {
+      image: iphone7Img,
+      category: "Classique Accessible",
+      title: "iPhone 7",
+      description:
+        "Fiabilité et compacité à petit prix. Idéal pour un usage quotidien simple.",
+      items: [
+        "32GB / 128GB",
+        "Noir Mat / Or",
+        "Touch ID",
+        "Compact 4.7\"",
+      ],
+    },
+    {
+      image: bestSellerImg,
+      category: "Best Seller",
+      title: "Téléphone Standard",
+      description:
+        "Le choix populaire pour un usage polyvalent et fiable.",
+      items: [
+        "Android / iOS",
+        "Batterie longue durée",
+        "Double SIM",
+        "4G LTE",
+      ],
+    },
+    // General Categories
     {
       image: smartphoneImg,
       category: "Smartphones",

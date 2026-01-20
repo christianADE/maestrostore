@@ -42,11 +42,10 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        showDarkHeader
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${showDarkHeader
           ? "bg-background/95 backdrop-blur-md shadow-soft py-3"
           : "bg-transparent py-5"
-      }`}
+        }`}
     >
       <div className="container-luxury px-6">
         <nav className="flex items-center justify-between">
@@ -58,14 +57,12 @@ const Header = () => {
               className="h-12 w-12 rounded-full object-cover shadow-elegant transition-transform duration-300 group-hover:scale-105"
             />
             <div className="flex flex-col">
-              <span className={`font-serif font-bold text-xl transition-colors duration-300 ${
-                showDarkHeader ? "text-foreground" : "text-white"
-              }`}>
+              <span className={`font-serif font-bold text-xl transition-colors duration-300 ${showDarkHeader ? "text-foreground" : "text-white"
+                }`}>
                 Maestro Store
               </span>
-              <span className={`text-xs font-medium transition-colors duration-300 ${
-                showDarkHeader ? "text-primary" : "text-gold"
-              }`}>
+              <span className={`text-xs font-medium transition-colors duration-300 ${showDarkHeader ? "text-primary" : "text-gold"
+                }`}>
                 Premier
               </span>
             </div>
@@ -77,15 +74,14 @@ const Header = () => {
               <Link
                 key={link.href}
                 to={link.href}
-                className={`relative font-medium transition-colors duration-300 ${
-                  isActiveLink(link.href)
+                className={`relative font-medium transition-colors duration-300 ${isActiveLink(link.href)
                     ? showDarkHeader
                       ? "text-primary"
                       : "text-gold"
                     : showDarkHeader
-                    ? "text-foreground hover:text-primary"
-                    : "text-white/90 hover:text-white"
-                } ${isActiveLink(link.href) ? "" : "underline-luxury"}`}
+                      ? "text-foreground hover:text-primary"
+                      : "text-white/90 hover:text-white"
+                  } ${isActiveLink(link.href) ? "" : "underline-luxury"}`}
               >
                 {link.label}
                 {isActiveLink(link.href) && (
@@ -97,8 +93,8 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button 
-              variant={showDarkHeader ? "luxury" : "hero-outline"} 
+            <Button
+              variant={showDarkHeader ? "luxury" : "hero-outline"}
               size="default"
               asChild
             >
@@ -125,17 +121,16 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-lg shadow-luxury animate-fade-in">
+          <div className="md:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-lg shadow-luxury animate-fade-in">
             <div className="container-luxury px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`font-medium py-2 border-b border-border/50 transition-colors ${
-                    isActiveLink(link.href)
+                  className={`font-medium py-2 border-b border-border/50 transition-colors ${isActiveLink(link.href)
                       ? "text-primary"
-                      : "text-foreground hover:text-primary"
-                  }`}
+                      : "text-black hover:text-primary"
+                    }`}
                 >
                   {link.label}
                 </Link>
